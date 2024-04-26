@@ -1,0 +1,121 @@
+zabbix_export:
+  version: '6.0'
+  date: '2024-04-26T18:12:54Z'
+  groups:
+    - uuid: 36bff6c29af64692839d077febfc7079
+      name: 'Templates/Network devices'
+  templates:
+    - uuid: a6312167587041019c9c182c79bf6bab
+      template: 'HP Color LaserJet MFP M680'
+      name: 'HP Color LaserJet MFP M680'
+      groups:
+        - name: 'Templates/Network devices'
+      items:
+        - uuid: fe22b1533aae44e18816148365ab2a7b
+          name: 'Black toner level'
+          type: SNMP_AGENT
+          snmp_oid: .iso.3.6.1.2.1.43.11.1.1.9.1.1
+          key: printer.black_toner_level
+          value_type: FLOAT
+          units: '%'
+          preprocessing:
+            - type: IN_RANGE
+              parameters:
+                - '1'
+                - '100'
+              error_handler: CUSTOM_VALUE
+              error_handler_params: '0'
+        - uuid: a561f780103d4b75b0c751546b887e11
+          name: 'Print counter'
+          type: SNMP_AGENT
+          snmp_oid: .1.3.6.1.2.1.43.10.2.1.4.1.1
+          key: printer.counter
+          delay: 10m
+          units: pages
+        - uuid: 5ab641a1ec9c400184ed41d6b0f2af23
+          name: 'Print counter (BW)'
+          type: SNMP_AGENT
+          snmp_oid: .1.3.6.1.4.1.11.2.3.9.4.2.1.4.1.2.6.0
+          key: printer.counter_bw
+          delay: 10m
+          units: pages
+        - uuid: ea5c4219c08842128c5b44796e34dbc7
+          name: 'Print counter (Color)'
+          type: SNMP_AGENT
+          snmp_oid: .1.3.6.1.4.1.11.2.3.9.4.2.1.4.1.2.7.0
+          key: printer.counter_color
+          delay: 10m
+          units: pages
+        - uuid: 45c2d98fc40140419eecbbf0374fdf1d
+          name: 'Cyan toner level'
+          type: SNMP_AGENT
+          snmp_oid: .iso.3.6.1.2.1.43.11.1.1.9.1.2
+          key: printer.cyan_toner_level
+          value_type: FLOAT
+          units: '%'
+          preprocessing:
+            - type: IN_RANGE
+              parameters:
+                - '1'
+                - '100'
+              error_handler: CUSTOM_VALUE
+              error_handler_params: '0'
+        - uuid: ce2783269edb4c3f8adce69f3130f870
+          name: 'Magenta toner level'
+          type: SNMP_AGENT
+          snmp_oid: .iso.3.6.1.2.1.43.11.1.1.9.1.1
+          key: printer.magenta_toner_level
+          value_type: FLOAT
+          units: '%'
+          preprocessing:
+            - type: IN_RANGE
+              parameters:
+                - '1'
+                - '100'
+              error_handler: CUSTOM_VALUE
+              error_handler_params: '0'
+        - uuid: 6a16ccf4b5e749b0bc206e1e53ffa88f
+          name: 'Device Name'
+          type: SNMP_AGENT
+          snmp_oid: iso.3.6.1.2.1.25.3.2.1.3.1
+          key: printer.name
+          delay: 3h
+          trends: '0'
+          value_type: TEXT
+        - uuid: af9c56698207494c8ce3b48656848135
+          name: Status
+          type: SNMP_AGENT
+          snmp_oid: iso.3.6.1.2.1.43.16.5.1.2.1.1
+          key: printer.status
+          trends: '0'
+          value_type: TEXT
+        - uuid: ff461c801eaf49c2b460550418abda02
+          name: 'Yellow toner level'
+          type: SNMP_AGENT
+          snmp_oid: .1.3.6.1.2.1.43.11.1.1.9.1.4
+          key: printer.yellow_toner_level
+          value_type: FLOAT
+          units: '%'
+          preprocessing:
+            - type: IN_RANGE
+              parameters:
+                - '1'
+                - '100'
+              error_handler: CUSTOM_VALUE
+              error_handler_params: '0'
+        - uuid: d8f01e5de4e14a3d8cca686683171430
+          name: 'Serial number'
+          type: SNMP_AGENT
+          snmp_oid: .1.3.6.1.2.1.43.5.1.1.17.1
+          key: sys.hw.serialnumber
+          delay: 3h
+          trends: '0'
+          value_type: TEXT
+          inventory_link: SERIALNO_A
+        - uuid: a7cc6d42388f4449889f283ae0987b74
+          name: Uptime
+          type: SNMP_AGENT
+          snmp_oid: .1.3.6.1.2.1.1.3.0
+          key: sys.uptime
+          delay: 1h
+          units: uptime
